@@ -4,6 +4,7 @@ namespace App\Model;
 
 use App\DB\Conexao;
 use App\Utils\Str;
+use PDO;
 use PDOException;
 
 require './app/db/database.php';
@@ -48,6 +49,7 @@ class Torcedor{
         $rQuery = self::$conexao->prepare($sql);
         $rQuery->execute();
         return $rQuery->fetchAll(\PDO::FETCH_ASSOC);
+        //return $rQuery->fetch(PDO::FETCH_OBJ);
     } catch(PDOException $e) {
         return false;
     }

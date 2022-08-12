@@ -14,7 +14,6 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
  */
 class Page{
   
-
     /**
    * metodo responsvel por renderizr o Header
    * @return string
@@ -46,15 +45,6 @@ class Page{
    * @return string
    */
   public static function getXls(){
-
-
-
-    $spreadsheet = new Spreadsheet();
-    $sheet = $spreadsheet->getActiveSheet();
-    $sheet->setCellValue('A1', 'Hello World !');
-
-    $writer = new Xlsx($spreadsheet);
-    $writer->save('hello world.xlsx');
 
     return View::render('pages/xls');
   }
@@ -88,15 +78,15 @@ class Page{
 
      return View::render('pages/table',
     [
-      'documento'=> $lista_array[$key]['documento'],
-      'nome'=> $lista_array[$key]['nome'],
-      'email'=> $lista_array[$key]['email'],
-      'cep'=> $lista_array[$key]['cep'],
-      'endereco'=> $lista_array[$key]['endereco'],
-      'bairro'=> $lista_array[$key]['bairro'],
-      'cidade'=> $lista_array[$key]['cidade'],
-      'uf'=> $lista_array[$key]['uf'],
-      'ativo'=> $lista_array[$key]['ativo']
+      /* 'documento'=> $lista_array['documento'],
+       'nome'=> $lista_array['nome'],
+      'email'=> $lista_array['email'],
+      'cep'=> $lista_array['cep'],
+      'endereco'=> $lista_array['endereco'],
+      'bairro'=> $lista_array['bairro'],
+      'cidade'=> $lista_array['cidade'],
+      'uf'=> $lista_array['uf'],
+      'ativo'=> $lista_array['ativo']  */
     ]); 
   }
   /**
@@ -110,6 +100,7 @@ class Page{
       'header'=>self::getHeader(),
       'footer'=>self::getFooter(),
       'xml'=>self::getXml(),
+      'xls'=>self::getXls(),
       'table'=>self::getTable(),
       'content' => $content
     ]);

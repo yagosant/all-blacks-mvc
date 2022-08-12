@@ -1,0 +1,40 @@
+$lista_array = [];
+foreach ($listas as $key => $lista) {
+      array_push($lista_array, array(
+        
+        'documento' => $listas->DOCUMENTO,
+        'nome' => $listas->NOME,
+        'email' => $listas->EMAIL,
+        'cep' => $listas->CEP,
+        'endereco' => $listas->ENDERECO,
+        'bairro' => $listas->BAIRRO,
+        'cidade' => $listas->CIDADE,
+        'uf' => $listas->UF,
+        'ativo' => $listas->ATIVO, 
+        /* 'documento' => $lista['DOCUMENTO'],
+         'nome' => $lista['NOME'],
+        'email' => $lista['EMAIL'],
+        'cep' => $lista['CEP'],
+        'endereco' => $lista['ENDERECO'],
+        'bairro' => $lista['BAIRRO'],
+        'cidade' => $lista['CIDADE'],
+        'uf' => $lista['UF'],
+        'ativo' => $lista['ATIVO'],  */
+      ));
+    }
+    //var_dump($lista_array[$key]['documento']);exit;
+
+    return View::render(
+      'pages/table',
+      [
+        'documento' => $lista_array[$key]['documento'] ??= null,
+        'nome' => $lista_array[$key]['nome'] ??= null,
+        'email' => $lista_array[$key]['email'] ??= null,
+        'cep' => $lista_array[$key]['cep'] ??= null,
+        'endereco' => $lista_array[$key]['endereco'] ??= null,
+        'bairro' => $lista_array[$key]['bairro'] ??= null,
+        'cidade' => $lista_array[$key]['cidade'] ??= null,
+        'uf' => $lista_array[$key]['uf'] ??= null,
+        'ativo' => $lista_array[$key]['ativo'] ??= null,
+      ]
+    );
