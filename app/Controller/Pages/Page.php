@@ -4,6 +4,10 @@ namespace App\Controller\Pages;
 
 use App\Model\Torcedor;
 use \App\Utils\View;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
+
 /**
  * metodo responsvel por retornar o conteudo do site
  * @return string
@@ -35,6 +39,24 @@ class Page{
    */
   public static function getXml(){
     return View::render('pages/xml');
+  }
+
+     /**
+   * metodo responsvel por renderizr o xml
+   * @return string
+   */
+  public static function getXls(){
+
+
+
+    $spreadsheet = new Spreadsheet();
+    $sheet = $spreadsheet->getActiveSheet();
+    $sheet->setCellValue('A1', 'Hello World !');
+
+    $writer = new Xlsx($spreadsheet);
+    $writer->save('hello world.xlsx');
+
+    return View::render('pages/xls');
   }
 
        /**
